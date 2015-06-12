@@ -5,27 +5,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.server.moneyball.user.UserLoginDao;
 import com.server.moneyball.user.UserVO;
+import com.server.moneyball.user.UserVOList;
 
 @Controller
 public class UserLoginController {
-	private UserVO userVo;
 
+	private UserLoginDao userLoginDao;
+	
+	
 	// http://localhost:8080/moneyball/user/login?id=10&pwd=3&kindOfSNS
 	@RequestMapping("/user/login")
 	public @ResponseBody OperationResult doLoginJSON(@RequestParam("id") String id,
-			@RequestParam("pwd") String pwd,
+			@RequestParam("pw") String pw,
 			@RequestParam("kindOfSNS") int kindOfSNS) {
-		//userVo.setId(id);
-		//userVo.setPw(pwd);
-		//userVo.setKindOfSNS(kindOfSNS);
-		//return userVo;
-		
-		return new OperationResult(true);
+		try{
+		UserVOList userVOList = userLoginDao.selectUser(id, pw, kindOfSNS);
+		return new OperationResult(true, userVOList);
+		}catch(Exception e){
+			return new OperationResult(false, "errorCode","id나 pw가 틀림");
+		}
 	}
 
-	public void setUserVo(UserVO userVo) {
-		this.userVo = userVo;
+
+	public void setUserLoginDao(UserLoginDao userLoginDao) {
+		this.userLoginDao = userLoginDao;
 	}
+	
+	
 
 }

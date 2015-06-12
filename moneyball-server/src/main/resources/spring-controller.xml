@@ -6,6 +6,6 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean class="com.server.moneyball.controller.UserLoginController">
-	<property name="userVo" ref="userVo"/>
+	<property name="userLoginDao" ref="userLoginDao"/>
 	</bean>
 </beans>

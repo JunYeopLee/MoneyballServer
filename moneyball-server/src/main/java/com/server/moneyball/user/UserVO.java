@@ -5,6 +5,29 @@ public class UserVO {
 	String id;
 	String pw;
 	int kindOfSNS;
+	String name;
+	int money;
+
+	public UserVO() {
+		super();
+	}
+	
+	public UserVO(String id, String pw, int kindOfSNS, String name, int money) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.kindOfSNS = kindOfSNS;
+		this.name = name;
+		this.money = money;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
 
 	public String getId() {
 		return id;
