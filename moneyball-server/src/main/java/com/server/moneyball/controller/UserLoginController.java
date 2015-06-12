@@ -13,13 +13,15 @@ public class UserLoginController {
 
 	// http://localhost:8080/moneyball/user/login?id=10&pwd=3&kindOfSNS
 	@RequestMapping("/user/login")
-	public @ResponseBody UserVO doLoginJSON(@RequestParam("id") String id,
+	public @ResponseBody OperationResult doLoginJSON(@RequestParam("id") String id,
 			@RequestParam("pwd") String pwd,
 			@RequestParam("kindOfSNS") int kindOfSNS) {
-		userVo.setId(id);
-		userVo.setPw(pwd);
-		userVo.setKindOfSNS(kindOfSNS);
-		return userVo;
+		//userVo.setId(id);
+		//userVo.setPw(pwd);
+		//userVo.setKindOfSNS(kindOfSNS);
+		//return userVo;
+		
+		return new OperationResult(true);
 	}
 
 	public void setUserVo(UserVO userVo) {
