@@ -8,5 +8,9 @@
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
  
+  	<bean id="selectMatchListDao" class="com.server.moneyball.scoreprediction.IbatisSelectMatchListDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+ 
 </beans>
 

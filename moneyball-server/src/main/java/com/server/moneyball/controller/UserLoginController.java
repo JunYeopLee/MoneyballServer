@@ -15,7 +15,8 @@ public class UserLoginController {
 	private UserLoginDao userLoginDao;
 	
 	
-	// http://localhost:8080/moneyball/user/login?id=10&pwd=3&kindOfSNS
+	// http://localhost:8080/moneyball/user/login?id=J&pw=1&kindOfSNS=1
+	//http://166.104.142.94/moneyball-server/user/login?id=J&pw=1&kindOfSNS=1
 	@RequestMapping("/user/login")
 	public @ResponseBody OperationResult doLoginJSON(@RequestParam("id") String id,
 			@RequestParam("pw") String pw,
