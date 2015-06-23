@@ -10,7 +10,7 @@ import com.server.moneyball.user.UserVO;
 import com.server.moneyball.user.UserVOList;
 
 @Controller
-public class UserLoginController {
+public class UserController {
 
 	private UserLoginDao userLoginDao;
 	

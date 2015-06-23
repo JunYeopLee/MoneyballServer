@@ -12,7 +12,7 @@ import com.server.moneyball.user.UserVO;
 @ContextConfiguration(locations={"classpath:/spring-controller.xml", "classpath:/spring-mvc.xml"})
 public class UserLoginControllerTest {
 	
-	private UserLoginController controller = new UserLoginController();
+	private UserController controller = new UserController();
 	
 	@Autowired
 	private UserVO user;

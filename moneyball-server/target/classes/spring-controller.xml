@@ -5,8 +5,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans   
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean class="com.server.moneyball.controller.UserLoginController">
-	<property name="userLoginDao" ref="userLoginDao"/>
+	<bean class="com.server.moneyball.controller.UserController">
+	<property name="userDao" ref="userDao"/>
 	</bean>
 	
 	<bean class="com.server.moneyball.controller.MatchController">
