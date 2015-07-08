@@ -1,11 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.spring.moneyball</groupId>
 	<artifactId>moneyball-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<!-- 버전관리 -->
 	<properties>
 		<servlet.version>2.5</servlet.version>
 		<jsp.version>2.1</jsp.version>
@@ -13,6 +15,7 @@
 		<jackson.version>1.9.10</jackson.version>
 		<jdk.version>1.8</jdk.version>
 		<c3p0.version>0.9.1.2</c3p0.version>
+		<shiro.version>1.2.0</shiro.version>
 	</properties>
 
 
@@ -31,8 +34,7 @@
 		</dependency>
 
 
-		<!-- Spring 3 dependencies -->
-
+		<!-- Sprig Web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -115,8 +117,20 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.26</version>
 		</dependency>
-	</dependencies>
 
+
+		<!-- 인증/권한 -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<resources>
@@ -124,7 +138,7 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
-		<finalName>SpringMVC</finalName>
+		<finalName>moneyball-server</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

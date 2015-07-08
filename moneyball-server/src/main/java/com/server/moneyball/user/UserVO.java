@@ -4,6 +4,7 @@ public class UserVO {
 
 	String id;
 	String pw;
+	int userNum;
 	int kindOfSNS;
 	String name;
 	int money;
@@ -11,14 +12,32 @@ public class UserVO {
 	public UserVO() {
 		super();
 	}
-	
-	public UserVO(String id, String pw, int kindOfSNS, String name, int money) {
+
+	public UserVO(String id, String pw, int userNum, int kindOfSNS,
+			String name, int money) {
 		super();
 		this.id = id;
 		this.pw = pw;
+		this.userNum = userNum;
 		this.kindOfSNS = kindOfSNS;
 		this.name = name;
 		this.money = money;
+	}
+
+	public int getUserNum() {
+		return userNum;
+	}
+
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getMoney() {
@@ -51,6 +70,13 @@ public class UserVO {
 
 	public void setKindOfSNS(int kindOfSNS) {
 		this.kindOfSNS = kindOfSNS;
+	}
+
+	public boolean isPasswordEquals(String pw) {
+		if (this.pw == null) {
+			return false;
+		}
+		return this.pw.compareTo(pw) == 0;
 	}
 
 }

@@ -6,7 +6,7 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean class="com.server.moneyball.controller.UserController">
-	<property name="userDao" ref="userDao"/>
+	<property name="userService" ref="userService"/>
 	</bean>
 	
 	<bean class="com.server.moneyball.controller.MatchController">
