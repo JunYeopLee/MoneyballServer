@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MatchList">
+
+	<typeAlias alias="matchVO"
+		type="com.server.moneyball.scoreprediction.MatchVO" />
+
+	<resultMap id="matchVOMap" class="matchVO">
+		<result property="matchId" column="MATCH_ID" />
+		<result property="today" column="TODAY_DT" />
+		<result property="stadiumTime" column="STADIUM_TIME" />
+		<result property="stadiumName" column="STADIUM_NAME" />
+		<result property="team1Name" column="TEAM1_NAME" />
+		<result property="team2Name" column="TEAM2_NAME" />
+		<result property="predictScore1" column="PREDICT_SCORE_1" />
+		<result property="predictScore2" column="PREDICT_SCORE_2" />
+		<result property="predictScore3" column="PREDICT_SCORE_3" />
+		<result property="predictScore4" column="PREDICT_SCORE_4" />
+		<result property="predictScore5" column="PREDICT_SCORE_5" />
+		<result property="predictPercent1" column="PREDICT_PERCENT_1" />
+		<result property="predictPercent2" column="PREDICT_PERCENT_2" />
+		<result property="predictPercent3" column="PREDICT_PERCENT_3" />
+		<result property="predictPercent4" column="PREDICT_PERCENT_4" />
+		<result property="predictPercent5" column="PREDICT_PERCENT_5" />
+		<result property="rateTeam1" column="RATE_TEAM1" />
+		<result property="rateTeam2" column="RATE_TEAM2" />
+	</resultMap>
+
+	<select id="selectMatchList" resultMap="matchVOMap" resultClass="matchVO">
+		<![CDATA[
+		SELECT B.MATCH_ID,
+			   DATE_FORMAT(B.TODAY_DT,'%Y%m%d') AS TODAY_DT,
+		       B.STADIUM_TIME, 
+		       B.STADIUM_NAME, 
+		       B.TEAM1_NAME, 
+		       B.TEAM2_NAME, 
+		       B.PREDICT_SCORE_1, 
+		       B.PREDICT_SCORE_2,
+		       IF(A.UNLOCK3=1, B.PREDICT_SCORE_3, 0) AS PREDICT_SCORE_3, 
+		       IF(A.UNLOCK4=1, B.PREDICT_SCORE_4, 0) AS PREDICT_SCORE_4, 
+		       IF(A.UNLOCK5=1, B.PREDICT_SCORE_5, 0) AS PREDICT_SCORE_5,
+		       B.PREDICT_PERCENT_1,
+		       B.PREDICT_PERCENT_2,
+		       B.PREDICT_PERCENT_3,
+		       B.PREDICT_PERCENT_4,
+		       B.PREDICT_PERCENT_5,
+		       B.RATE_TEAM1,
+		       B.RATE_TEAM2
+		FROM moneyball.UNLOCK_TB A, moneyball.MATCH_TB B
+		WHERE A.MATCH_ID = B.MATCH_ID
+		AND A.USER_NUM = #userNum#
+		AND DATE_FORMAT(B.TODAY_DT,'%Y%m%d') = #today#
+	]]>
+	</select>
+
+</sqlMap>

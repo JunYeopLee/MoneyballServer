@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserLogin">
+
+	<typeAlias alias="userVO" type="com.server.moneyball.user.UserVO" />
+
+	<resultMap id="userVOMap" class="userVO">
+		<result property="id" column="ID" />
+		<result property="pw" column="PW" />
+		<result property="userNum" column="USER_NUM" />
+		<result property="kindOfSNS" column="KIND_OF_SNS_NO" />
+		<result property="name" column="NAME" />
+		<result property="money" column="MONEY" />
+	</resultMap>
+
+	<select id="selectUserInfo" resultMap="userVOMap" resultClass="userVO">
+		<![CDATA[
+		select USER_NUM, ID, PW, USER_NUM, KIND_OF_SNS_NO, NAME, MONEY
+		from moneyball.USER_TB 
+		where ID = #id# 
+		and PW = #pw# 
+		AND KIND_OF_SNS_NO = #kindOfSNS#
+	]]>
+	</select>
+
+	<resultMap id="userVOMap" class="userVO">
+		<result property="userNum" column="USER_NUM" />
+		<result property="id" column="ID" />
+		<result property="kindOfSNS" column="KIND_OF_SNS_NO" />
+	</resultMap>
+
+	<select id="findUser" resultMap="userVOMap" resultClass="userVO">
+		<![CDATA[
+		select USER_NUM, ID, KIND_OF_SNS_NO
+		from moneyball.USER_TB 
+		where ID = #id# 
+		AND KIND_OF_SNS_NO = #kindOfSNS#
+	]]>
+	</select>
+
+
+</sqlMap>
