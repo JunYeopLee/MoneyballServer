@@ -10,25 +10,13 @@ import com.server.moneyball.user.UserLoginDao;
 
 public class IbatisUserLoginDao extends SqlMapClientDaoSupport implements
 		UserLoginDao {
-
 	@SuppressWarnings("unchecked")
 	@Override
-	public UserVO selectUserInfo(String id, String pw, int kindOfSNS) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("id", id);
-		paramMap.put("pw", pw);
-		paramMap.put("kindOfSNS", kindOfSNS);
-		UserVO userVO = (UserVO)getSqlMapClientTemplate().queryForObject(
-				"UserLogin.selectUserInfo", paramMap);
-		return userVO;
-	}
-
-	@Override
-	public UserVO findUser(String id, int kindOfSNS) {
+	public UserVO findOne(String id, int kindOfSNS) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("id", id);
 		paramMap.put("kindOfSNS", kindOfSNS);
-		UserVO userVO = (UserVO) getSqlMapClientTemplate().queryForObject("UserLogin.findUser", paramMap);
+		UserVO userVO = (UserVO) getSqlMapClientTemplate().queryForObject("UserLogin.findOne", paramMap);
 		return userVO;
 		
 	}

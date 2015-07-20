@@ -7,6 +7,7 @@
 
 	<bean id="userService" class="com.server.moneyball.user.UserServiceImpl">
 		<property name="userLoginDao" ref="userLoginDao" />
+		<property name="userSignInDao" ref="userSignInDao" />
 	</bean>
 
 </beans>

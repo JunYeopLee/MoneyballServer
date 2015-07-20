@@ -10,34 +10,16 @@
 		<result property="pw" column="PW" />
 		<result property="userNum" column="USER_NUM" />
 		<result property="kindOfSNS" column="KIND_OF_SNS_NO" />
-		<result property="name" column="NAME" />
 		<result property="money" column="MONEY" />
 	</resultMap>
 
-	<select id="selectUserInfo" resultMap="userVOMap" resultClass="userVO">
+	<select id="findOne" resultMap="userVOMap" resultClass="userVO">
 		<![CDATA[
-		select USER_NUM, ID, PW, USER_NUM, KIND_OF_SNS_NO, NAME, MONEY
-		from moneyball.USER_TB 
-		where ID = #id# 
-		and PW = #pw# 
-		AND KIND_OF_SNS_NO = #kindOfSNS#
-	]]>
-	</select>
-
-	<resultMap id="userVOMap" class="userVO">
-		<result property="userNum" column="USER_NUM" />
-		<result property="id" column="ID" />
-		<result property="kindOfSNS" column="KIND_OF_SNS_NO" />
-	</resultMap>
-
-	<select id="findUser" resultMap="userVOMap" resultClass="userVO">
-		<![CDATA[
-		select USER_NUM, ID, KIND_OF_SNS_NO
+		select USER_NUM, ID, PW, USER_NUM, KIND_OF_SNS_NO, MONEY
 		from moneyball.USER_TB 
 		where ID = #id# 
 		AND KIND_OF_SNS_NO = #kindOfSNS#
 	]]>
 	</select>
-
-
+	
 </sqlMap>

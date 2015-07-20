@@ -6,17 +6,6 @@ public class UserSignInReq {
 	public String pw;
 	private int kindOfSNS;
 
-	public UserSignInReq() {
-		super();
-	}
-
-	public UserSignInReq(String id, String pw, int kindOfSNS) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.kindOfSNS = kindOfSNS;
-	}
-
 	public String getId() {
 		return id;
 	}

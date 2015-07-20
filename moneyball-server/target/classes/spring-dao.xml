@@ -8,6 +8,10 @@
   	<bean id="userLoginDao" class="com.server.moneyball.user.IbatisUserLoginDao">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
+	
+  	<bean id="userSignInDao" class="com.server.moneyball.user.IbatisUserSignInDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
  
   	<bean id="selectMatchListDao" class="com.server.moneyball.scoreprediction.IbatisSelectMatchListDao">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />

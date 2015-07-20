@@ -30,7 +30,7 @@ public class UserLoginDaoTest {
 	@Test
 	public void userlogindaoTest() {
 
-		UserVO v = userLoginDao.selectUserInfo("J", "1", 1);
+		UserVO v = userLoginDao.findOne("J", 1);
 		//userLoginDao.selectUserInfo("J", "1", 1);
 
 		//UserVO v = userLoginDao.findUser("J", 0);
