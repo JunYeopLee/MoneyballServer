@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.server.moneyball.user.UserService;
-import com.server.moneyball.user.UserSignInReq;
+import com.server.moneyball.user.UserSignUpReq;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +26,7 @@ public class UserServiceTest {
 
 	@Test
 	public void test(){
-		UserSignInReq userSignInReq = new UserSignInReq(); 
+		UserSignUpReq userSignInReq = new UserSignUpReq(); 
 		userSignInReq.setId("J1");
 		userSignInReq.setPw("1234");
 		userSignInReq.setKindOfSNS(0);

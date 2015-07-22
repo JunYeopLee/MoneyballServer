@@ -1,6 +1,6 @@
 package com.server.moneyball.user;
 
-public class UserSignInReq {
+public class UserSignUpReq {
 
 	private String id;
 	public String pw;

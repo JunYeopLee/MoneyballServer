@@ -1,11 +1,15 @@
 package com.server.moneyball.user;
 
+import java.sql.SQLException;
+
 import org.apache.shiro.authc.AuthenticationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.transaction.annotation.Transactional;
+
 public class UserServiceImpl implements UserService {
 
 	UserLoginDao userLoginDao;
-	UserSignInDao userSignInDao;
+	UserSignUpDao userSignUpDao;
 	UserModifyDao userModifyDao;
 
 	// 로그인
@@ -21,73 +25,74 @@ public class UserServiceImpl implements UserService {
 		}
 		return userVO;
 	}
-	
+
 	// 가입
 	@Override
-	public void signInUser(UserSignInReq userSignInReq) {
+	public void signUpUser(UserSignUpReq userSignUpReq) {
 		try {
-			userSignInDao.insertUser(userSignInReq);
-		} catch (Exception e) {
-			throw new AuthenticationException("SNS SignIn fail");
+			userSignUpDao.insertUser(userSignUpReq);
+		} catch (DuplicateKeyException sqlExc) {
+			throw new DuplicateKeyException("ID 중복");
 		}
 	}
-	
+
 	// 중복확인
 	@Override
 	public boolean duplicationId(String id) {
-		UserVO user = userSignInDao.findId(id);
+		UserVO user = userSignUpDao.findId(id);
 		boolean check = true;
-		if(user !=null){
+		if (user != null) {
 			check = false;
 		}
 		return check;
 	}
-	
 
 	// 비밀번호 수정
 	@Transactional
 	@Override
-	public void modifyPassword(String id, int kindOfSNS, int userNum, String newPassword,String oldPassword){
-		if(!id.equals("") &&!id.equals(null)){
+	public void modifyPassword(String id, int kindOfSNS, int userNum,
+			String newPassword, String oldPassword) {
+		if (!id.equals("") && !id.equals(null)) {
 			UserVO user = findUser(id, kindOfSNS);
 			user.changePassword(newPassword, oldPassword);
-			modyfyPassword(userNum, user.getPw());
+			modifyPassword(userNum, user.getPw());
 		}
 	}
 
-	private void modyfyPassword(int userNum, String pw) {
+	private void modifyPassword(int userNum, String pw) {
 		try {
 			userModifyDao.modyfyUserPw(userNum, pw);
 		} catch (Exception e) {
-			throw new AuthenticationException("SNS SignIn fail");
-		}		
+			throw new AuthenticationException("modify fail");
+		}
 	}
 
 	public UserVO noneAuthCheck(String id, String encryptPw, int kindOfSNS) {
 		UserVO foundUser = findUser(id, kindOfSNS);
 		checkNull(foundUser);
 		checkPasswordEquals(foundUser, encryptPw);
-		foundUser.setPw("");	// 보낼때 password 안보이게 하기
+		foundUser.setPw(""); // 보낼때 password 안보이게 하기
 		return foundUser;
 	}
 
 	public UserVO snsAuthCheck(String id, String encryptPw, int kindOfSNS) {
 		UserVO foundUser = findUser(id, kindOfSNS);
 		if (foundUser == null) { // id가 존재 하지 않을 경우
-			UserSignInReq userSignInReq = new UserSignInReq();
-			userSignInReq.setId(id);
-			userSignInReq.setPw(encryptPw);
-			userSignInReq.setKindOfSNS(kindOfSNS);
-			return snsSingIn(userSignInReq, foundUser);
+			UserSignUpReq userSignUpReq = new UserSignUpReq();
+			userSignUpReq.setId(id);
+			userSignUpReq.setPw(encryptPw);
+			userSignUpReq.setKindOfSNS(kindOfSNS);
+			return snsSingUp(userSignUpReq, foundUser);
 		} else {
 			return foundUser;
 		}
 	}
-	
-	private UserVO snsSingIn(UserSignInReq userSignInReq, UserVO foundUser) {
-		signInUser(userSignInReq);
-		foundUser = findUser(userSignInReq.getId(),	userSignInReq.getKindOfSNS());
-		foundUser.setPw("");	// 보낼때 password 안보이게 하기
+
+	private UserVO snsSingUp(UserSignUpReq userSignUpReq, UserVO foundUser) {
+		signUpUser(userSignUpReq);
+		foundUser = findUser(userSignUpReq.getId(),
+				userSignUpReq.getKindOfSNS());
+		foundUser.setPw(""); // 보낼때 password 안보이게 하기
 		return foundUser;
 	}
 
@@ -112,14 +117,12 @@ public class UserServiceImpl implements UserService {
 		this.userLoginDao = userLoginDao;
 	}
 
-	public void setUserSignInDao(UserSignInDao userSignInDao) {
-		this.userSignInDao = userSignInDao;
+	public void setUserSignUpDao(UserSignUpDao userSignUpDao) {
+		this.userSignUpDao = userSignUpDao;
 	}
-	
+
 	public void setUserModifyDao(UserModifyDao userModifyDao) {
 		this.userModifyDao = userModifyDao;
 	}
-
-
 
 }

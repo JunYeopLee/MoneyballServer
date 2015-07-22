@@ -9,7 +9,11 @@
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
 	
-  	<bean id="userSignInDao" class="com.server.moneyball.user.IbatisUserSignInDao">
+  	<bean id="userSignUpDao" class="com.server.moneyball.user.IbatisUserSignUpDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+  	<bean id="userModifyDao" class="com.server.moneyball.user.IbatisUserModifyDao">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
  

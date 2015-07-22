@@ -11,7 +11,7 @@ import com.server.moneyball.user.UserLoginDao;
 import com.server.moneyball.user.UserService;
 import com.server.moneyball.user.UserVO;
 import com.server.moneyball.user.UserVOList;
-import com.server.moneyball.user.UserSignInReq;
+import com.server.moneyball.user.UserSignUpReq;
 
 @Controller
 public class UserController {
@@ -34,16 +34,16 @@ public class UserController {
 		}
 	}
 
-	// https://localhost:8443/moneyball-server/user/signIn?id=juhee22kim&pw=434332242&kindOfSNS=0
-	@RequestMapping("/user/signIn")
+	// https://localhost:8443/moneyball-server/user/signUp?id=juhee22kim&pw=434332242&kindOfSNS=0
+	@RequestMapping("/user/signUp")
 	@ResponseBody
-	public OperationResult doSignIn(UserSignInReq userSignInReq) {
+	public OperationResult doSignUp(UserSignUpReq userSignUpReq) {
 		try {
-			String encryptPw = encrypt(userSignInReq.getPw());
-			userSignInReq.setPw(encryptPw);
-			userService.signInUser(userSignInReq);
+			String encryptPw = encrypt(userSignUpReq.getPw());
+			userSignUpReq.setPw(encryptPw);
+			userService.signUpUser(userSignUpReq);
 			return new OperationResult(true);
-		} catch (AuthenticationException ex) {
+		} catch (Exception ex) {
 			return new OperationResult(false, "errorCode", ex.getMessage());
 		}
 	}
@@ -55,7 +55,7 @@ public class UserController {
 		try {
 			boolean result = userService.duplicationId(id);
 			return new OperationResult(result, "해당 ID로 가입 여부: " + result + " 중복확인 완료");
-		} catch (AuthenticationException ex) {
+		} catch (Exception ex) {
 			return new OperationResult(false, "에러로 인한 중복확인 실패", ex.getMessage());
 		}
 	}

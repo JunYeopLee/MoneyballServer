@@ -4,7 +4,8 @@
 <sqlMapConfig>
 	 <settings useStatementNamespaces="true" />
 	 <sqlMap resource="ibatis/UserLogin.xml" />
-	 <sqlMap resource="ibatis/UserSignIn.xml" />
+	 <sqlMap resource="ibatis/UserSignUp.xml" />
 	 <sqlMap resource="ibatis/MatchList.xml" />
+	 <sqlMap resource="ibatis/UserModify.xml" />
 	
 </sqlMapConfig> 
