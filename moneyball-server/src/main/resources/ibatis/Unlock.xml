@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Unlock">
+
+	<typeAlias alias="userVO" type="com.server.moneyball.user.UserVO" />
+
+	<resultMap id="userIdMap" class="userVO">
+		<result property="userNum" column="USER_NUM" />
+	</resultMap>
+
+	<select id="selectUserMoney" resultMap="userIdMap" resultClass="userVO">
+		select USER_NUM, ID, MONEY
+		from moneyball.USER_TB 
+		where USER_NUM = #userNum# 
+	</select>
+
+	<insert id="insertUser" parameterClass="com.server.moneyball.user.UserSignUpReq">
+		INSERT INTO moneyball.USER_TB(ID,PW,KIND_OF_SNS_NO) VALUES (#id#,#pw#,#kindOfSNS#);
+	</insert>
+
+	<parameterMap id="ulParam" class="map"> 
+		<parameter property="pro_id"  jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="pro_pw" jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+		<parameter property="pro_kind_of_sns_no" jdbcType="int" javaType="java.lang.Integer" mode="IN" />
+	</parameterMap>
+
+	<procedure id="procedure_insertUlockTB" parameterMap="ulParam">
+		{ CALL moneyball.moneyball_signup(?,?,?,DATE_FORMAT(NOW(),'%Y%m%d')) }
+	</procedure>
+	
+
+	
+<!-- 
+	<update id="modify" parameterClass="com.scg.h00.customerservice.SuggestRequest">
+		update H11.SCS_SGS
+		set   SGS_SINGB = #requestFlag#
+			, SGS_TITLE = #title#
+			, SGS_DESC = #content#
+			, SGS_FILE1 = #fileUrl1#
+			, SGS_COMM1 = #fileName1#
+			, SGS_FILE2 = #fileUrl2#
+			, SGS_COMM2 = #fileName2#
+			, SGS_FILE3 = #fileUrl3#
+			, SGS_COMM3 = #fileName3#
+			, SGS_CID = #id#
+			, SGS_NAME = #customerName# /*신청구분1일때 일반고객이름*/
+			, SGS_JINO = #centerCd# /*신청구분2일때 고객센터코드*/
+			, SGS_HYEB = #businessName# /*신청구분3일때 협력업체이름*/
+			, SGS_REGDAT = (select TO_CHAR(SYSDATE, 'YYYYMMDD') from dual)
+			, SGS_REGTIM = (select TO_CHAR(SYSDATE, 'HH24MISS') from dual)
+			, SGS_REGID = #id#
+			, SGS_REGNAM = #customerName#
+			, SGS_DEL_YN = 'N'
+            , TEL_DDD = #areacode#
+            , TEL_EXN = #exchangeNumber1#
+            , TEL_NUM = #number1#
+            , CP_DDD = #identificationNumber#
+            , CP_EXN =#exchangeNumber2#
+            , CP_NUM = #number2#
+			where SGS_SEQNO = #seqNo#
+	</update>
+	
+	<delete id="delete" parameterClass="com.scg.h00.customerservice.SuggestRequest">
+		delete from H11.SCS_SGS
+	    where SGS_SEQNO = #seqNo#		
+	</delete> -->
+
+</sqlMap>
