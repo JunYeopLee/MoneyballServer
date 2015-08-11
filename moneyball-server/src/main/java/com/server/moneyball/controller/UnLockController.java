@@ -9,16 +9,17 @@ import com.server.moneyball.unlock.UnlockService;
 
 @Controller
 public class UnLockController {
-	// https://166.104.142.94:8443/moneyball-server/unlock?userNum=21&matchNum=1&unlockNum=3
 
 	private UnlockService unlockService;
 
+	// https://localhost:8443/moneyball-server/unlock?userNum=97&matchNum=7&unlockNum=3
+	// https://166.104.142.94:61000/moneyball-server/unlock?userNum=97&matchNum=7&unlockNum=3
 	@RequestMapping("/unlock")
 	@ResponseBody
 	public OperationResult doUnlock(UnlockReq UnlockReq) {
 		try {
-			unlockService.unlock(UnlockReq);
-			return new OperationResult(true);
+			int moneyball = unlockService.unlock(UnlockReq);
+			return new OperationResult(true, "잔여머니볼: "+moneyball);
 		} catch (Exception ex) {
 			return new OperationResult(false, "errorCode", ex.getMessage());
 		}

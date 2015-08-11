@@ -9,7 +9,7 @@
 	<property name="userService" ref="userService"/>
 	</bean>
 	
-	<bean class="com.server.moneyball.controller.UnlockService">
+	<bean class="com.server.moneyball.controller.UnLockController">
 	<property name="unlockService" ref="unlockService"/>
 	</bean>
 	

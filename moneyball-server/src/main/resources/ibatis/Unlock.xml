@@ -7,6 +7,8 @@
 
 	<resultMap id="userIdMap" class="userVO">
 		<result property="userNum" column="USER_NUM" />
+		<result property="id" column="ID" />
+		<result property="money" column="MONEY" />
 	</resultMap>
 
 	<select id="selectUserMoney" resultMap="userIdMap" resultClass="userVO">
@@ -14,23 +16,21 @@
 		from moneyball.USER_TB 
 		where USER_NUM = #userNum# 
 	</select>
-
-	<insert id="insertUser" parameterClass="com.server.moneyball.user.UserSignUpReq">
-		INSERT INTO moneyball.USER_TB(ID,PW,KIND_OF_SNS_NO) VALUES (#id#,#pw#,#kindOfSNS#);
-	</insert>
-
-	<parameterMap id="ulParam" class="map"> 
-		<parameter property="pro_id"  jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
-		<parameter property="pro_pw" jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
-		<parameter property="pro_kind_of_sns_no" jdbcType="int" javaType="java.lang.Integer" mode="IN" />
-	</parameterMap>
-
-	<procedure id="procedure_insertUlockTB" parameterMap="ulParam">
-		{ CALL moneyball.moneyball_signup(?,?,?,DATE_FORMAT(NOW(),'%Y%m%d')) }
-	</procedure>
 	
 
+	<update id="subtractMoneyBall">
+		update moneyball.USER_TB set money = #userMoney# where user_num = #userNum#
+	</update>
 	
+	<update id="unlockTB" parameterClass="com.server.moneyball.unlock.UnlockReq">
+		update moneyball.UNLOCK_TB 
+		set UNLOCK3 = IF(#unlockNum#=3,1,UNLOCK3),
+		 UNLOCK4 = IF(#unlockNum#=4,1,UNLOCK4),
+		 UNLOCK5 = IF(#unlockNum#=5,1,UNLOCK5)
+		where user_num = #userNum# and match_id = #matchNum#
+	</update>
+
+
 <!-- 
 	<update id="modify" parameterClass="com.scg.h00.customerservice.SuggestRequest">
 		update H11.SCS_SGS

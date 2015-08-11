@@ -21,16 +21,18 @@ public class IbatisUnlockDao extends SqlMapClientDaoSupport implements UnlockDao
 	
 	@Transactional
 	@Override
-	public UserVO subtractMoneyBall(int subtractMoney) {
-		// TODO Auto-generated method stub
-		return null;
+	public void subtractMoneyBall(int userNum, int userMoney) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("userNum", userNum);
+		paramMap.put("userMoney", userMoney);
+		getSqlMapClientTemplate().update("Unlock.subtractMoneyBall", paramMap);
 	}
 
 
 	@Transactional
 	@Override
 	public void unlockTB(UnlockReq unlockReq) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().update("Unlock.unlockTB", unlockReq);
 		
 	}
 
