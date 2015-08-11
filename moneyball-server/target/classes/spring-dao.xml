@@ -21,5 +21,9 @@
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
  
+  	<bean id="UnlockDao" class="com.server.moneyball.unlock.IbatisUnlockDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+ 
 </beans>
 

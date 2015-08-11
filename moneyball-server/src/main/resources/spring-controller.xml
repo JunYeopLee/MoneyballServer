@@ -9,6 +9,10 @@
 	<property name="userService" ref="userService"/>
 	</bean>
 	
+	<bean class="com.server.moneyball.controller.UnlockService">
+	<property name="unlockService" ref="unlockService"/>
+	</bean>
+	
 	<bean class="com.server.moneyball.controller.MatchController">
 	<property name="selectMatchListDao" ref="selectMatchListDao"/>
 	</bean>

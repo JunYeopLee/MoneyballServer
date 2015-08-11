@@ -31,8 +31,9 @@ public class UserServiceImpl implements UserService {
 	public void signUpUser(UserSignUpReq userSignUpReq) {
 		try {
 			userSignUpDao.insertUser(userSignUpReq);
+			userSignUpDao.procedure_insertUlockTB(userSignUpReq);
 		} catch (DuplicateKeyException sqlExc) {
-			throw new DuplicateKeyException("ID 중복");
+			throw new DuplicateKeyException("이미 사용중인 ID입니다.");
 		}
 	}
 

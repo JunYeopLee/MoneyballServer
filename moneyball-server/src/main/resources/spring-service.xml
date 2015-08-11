@@ -10,6 +10,10 @@
 		<property name="userSignUpDao" ref="userSignUpDao" />
 		<property name="userModifyDao" ref="userModifyDao" />
 	</bean>
+	
+	<bean id="unlockService" class="com.server.moneyball.unlock.UnlockServiceImpl">
+		<property name="unlockDao" ref="unlockDao"/>
+	</bean>
 
 </beans>
 

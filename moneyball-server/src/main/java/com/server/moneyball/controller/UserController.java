@@ -34,7 +34,7 @@ public class UserController {
 		}
 	}
 
-	// https://localhost:8443/moneyball-server/user/signUp?id=juhee22kim&pw=434332242&kindOfSNS=0
+	// https://166.104.142.94:8443/moneyball-server/user/signUp?id=1122&pw=434332242&kindOfSNS=0
 	@RequestMapping("/user/signUp")
 	@ResponseBody
 	public OperationResult doSignUp(UserSignUpReq userSignUpReq) {
