@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.server.moneyball.unlock.UnlockDao;
 import com.server.moneyball.unlock.UnlockReq;
+import com.server.moneyball.unlock.UnlockVO;
 import com.server.moneyball.user.UserVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,14 +24,14 @@ public class UnlockDaoTest {
 	public void test() {
 		UnlockReq unlockReq = new UnlockReq();
 		unlockReq.setUserNum(98);
-		unlockReq.setMatchNum(14);
+		unlockReq.setMatchNum(9);
 		unlockReq.setUnlockNum(3);
 		
-		//UserVO uservo = unlockDao.selectUserMoney(unlockReq);
-		//System.out.println(uservo.getMoney());
+		UnlockVO unlockvo = unlockDao.selectUserMoney(unlockReq);
+		System.out.println(unlockvo.getScore());
 		
 
-		unlockDao.subtractMoneyBall(98, 4700);
+		//unlockDao.subtractMoneyBall(98, 4700);
 		//unlockDao.unlockTB(unlockReq);
 	}
 

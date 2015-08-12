@@ -9,23 +9,24 @@ public class UnlockServiceImpl implements UnlockService {
 	UnlockDao unlockDao;
 
 	@Override
-	public int unlock(UnlockReq unlockReq) {
-		UserVO userVO;
-		userVO = unlockDao.selectUserMoney(unlockReq);
-		if (isMoneyEnough(userVO, unlockReq.getSubtractMoney())) {
-			int userMoney = userVO.getMoney() - unlockReq.getSubtractMoney();
-			unlockDao.subtractMoneyBall(userVO.getUserNum(), userMoney);
+	public UnlockVO unlock(UnlockReq unlockReq) {
+		UnlockVO unlockVO;
+		unlockVO = unlockDao.selectUserMoney(unlockReq);
+		if (isMoneyEnough(unlockVO, unlockReq.getSubtractMoney())) {
+			int userMoney = unlockVO.getPreSubtractmoney() - unlockReq.getSubtractMoney();
+			unlockDao.subtractMoneyBall(unlockVO.getUserNum(), userMoney);
 			unlockDao.unlockTB(unlockReq);
-			return userMoney;
+			unlockVO.setUserMoneyResult(userMoney);
+			return unlockVO;
 		} else {
 			throw new AuthenticationException("잔여머니볼이 부족합니다. 현재 잔여머니볼:"
-					+ userVO.getMoney());
+					+ unlockVO.getPreSubtractmoney());
 		}
 
 	}
 
-	public boolean isMoneyEnough(UserVO userVO, int subtractMoney) {
-		int nowUserMoney = userVO.getMoney();
+	public boolean isMoneyEnough(UnlockVO userVO, int subtractMoney) {
+		int nowUserMoney = userVO.getPreSubtractmoney();
 		boolean check = true;
 		if (nowUserMoney - subtractMoney <= 0) {
 			check = false;

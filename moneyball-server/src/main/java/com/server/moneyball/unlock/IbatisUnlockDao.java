@@ -6,17 +6,14 @@ import java.util.Map;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.server.moneyball.user.UserVO;
 
 public class IbatisUnlockDao extends SqlMapClientDaoSupport implements UnlockDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public UserVO selectUserMoney(UnlockReq unlockReq) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("userNum", unlockReq.getUserNum());
-		UserVO userVO = (UserVO) getSqlMapClientTemplate().queryForObject("Unlock.selectUserMoney", paramMap);
-		return userVO;	
+	public UnlockVO selectUserMoney(UnlockReq unlockReq) {
+				UnlockVO unlockVO = (UnlockVO) getSqlMapClientTemplate().queryForObject("Unlock.selectUserMoney", unlockReq);
+		return unlockVO;	
 		}
 	
 	@Transactional

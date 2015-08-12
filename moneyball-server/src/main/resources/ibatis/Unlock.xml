@@ -3,18 +3,21 @@
 
 <sqlMap namespace="Unlock">
 
-	<typeAlias alias="userVO" type="com.server.moneyball.user.UserVO" />
+	<typeAlias alias="unlockVO" type="com.server.moneyball.unlock.UnlockVO" />
 
-	<resultMap id="userIdMap" class="userVO">
+	<resultMap id="userIdMap" class="unlockVO">
 		<result property="userNum" column="USER_NUM" />
 		<result property="id" column="ID" />
-		<result property="money" column="MONEY" />
+		<result property="preSubtractmoney" column="MONEY" />
+		<result property="score" column="SCORE" />
 	</resultMap>
 
-	<select id="selectUserMoney" resultMap="userIdMap" resultClass="userVO">
-		select USER_NUM, ID, MONEY
-		from moneyball.USER_TB 
-		where USER_NUM = #userNum# 
+	<select id="selectUserMoney" resultMap="userIdMap" resultClass="unlockVO">
+	select a.USER_NUM, a.ID, a.MONEY, IF(#unlockNum#=3, b.PREDICT_SCORE_3, IF(#unlockNum#=4, b.PREDICT_SCORE_4,b.PREDICT_SCORE_5)) as SCORE
+		from moneyball.USER_TB a, moneyball.MATCH_TB b
+		where a.USER_NUM = #userNum#
+		and b.MATCH_ID=#matchNum#
+		 
 	</select>
 	
 

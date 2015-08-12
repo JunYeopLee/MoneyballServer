@@ -1,11 +1,14 @@
 package com.server.moneyball.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.server.moneyball.unlock.UnlockReq;
 import com.server.moneyball.unlock.UnlockService;
+import com.server.moneyball.unlock.UnlockVO;
 
 @Controller
 public class UnLockController {
@@ -18,8 +21,11 @@ public class UnLockController {
 	@ResponseBody
 	public OperationResult doUnlock(UnlockReq UnlockReq) {
 		try {
-			int moneyball = unlockService.unlock(UnlockReq);
-			return new OperationResult(true, moneyball);
+			UnlockVO unlockVO =  unlockService.unlock(UnlockReq);
+			ArrayList<String> result = new ArrayList<>();
+			result.add(String.valueOf(unlockVO.getUserMoneyResult()));
+			result.add(unlockVO.getScore());
+			return new OperationResult(true, result);
 		} catch (Exception ex) {
 			return new OperationResult(false, "errorCode", ex.getMessage());
 		}
