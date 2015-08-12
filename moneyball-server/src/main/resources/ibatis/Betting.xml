@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Betting">
+
+	<insert id="insertUserBetting" parameterClass="com.server.moneyball.betting.UserBettingReq">
+		insert into moneyball.USER_BET_TB(user_num,date_dt,bet_states,bet_money) values (#userNum#, now(), #betStates#,#betMoney#)
+	</insert>
+
+</sqlMap>
