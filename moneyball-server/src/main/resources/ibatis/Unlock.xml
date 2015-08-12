@@ -29,38 +29,7 @@
 		 UNLOCK5 = IF(#unlockNum#=5,1,UNLOCK5)
 		where user_num = #userNum# and match_id = #matchNum#
 	</update>
-
-
-<!-- 
-	<update id="modify" parameterClass="com.scg.h00.customerservice.SuggestRequest">
-		update H11.SCS_SGS
-		set   SGS_SINGB = #requestFlag#
-			, SGS_TITLE = #title#
-			, SGS_DESC = #content#
-			, SGS_FILE1 = #fileUrl1#
-			, SGS_COMM1 = #fileName1#
-			, SGS_FILE2 = #fileUrl2#
-			, SGS_COMM2 = #fileName2#
-			, SGS_FILE3 = #fileUrl3#
-			, SGS_COMM3 = #fileName3#
-			, SGS_CID = #id#
-			, SGS_NAME = #customerName# /*신청구분1일때 일반고객이름*/
-			, SGS_JINO = #centerCd# /*신청구분2일때 고객센터코드*/
-			, SGS_HYEB = #businessName# /*신청구분3일때 협력업체이름*/
-			, SGS_REGDAT = (select TO_CHAR(SYSDATE, 'YYYYMMDD') from dual)
-			, SGS_REGTIM = (select TO_CHAR(SYSDATE, 'HH24MISS') from dual)
-			, SGS_REGID = #id#
-			, SGS_REGNAM = #customerName#
-			, SGS_DEL_YN = 'N'
-            , TEL_DDD = #areacode#
-            , TEL_EXN = #exchangeNumber1#
-            , TEL_NUM = #number1#
-            , CP_DDD = #identificationNumber#
-            , CP_EXN =#exchangeNumber2#
-            , CP_NUM = #number2#
-			where SGS_SEQNO = #seqNo#
-	</update>
-	
+<!--	
 	<delete id="delete" parameterClass="com.scg.h00.customerservice.SuggestRequest">
 		delete from H11.SCS_SGS
 	    where SGS_SEQNO = #seqNo#		

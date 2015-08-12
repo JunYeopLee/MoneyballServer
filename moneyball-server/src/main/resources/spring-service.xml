@@ -14,6 +14,10 @@
 	<bean id="unlockService" class="com.server.moneyball.unlock.UnlockServiceImpl">
 		<property name="unlockDao" ref="unlockDao"/>
 	</bean>
+	
+	<bean id="bettingService" class="com.server.moneyball.betting.BettingServiceImpl">
+		<property name="saveUserBettingDao" ref="saveUserBettingDao"/>
+	</bean>
 
 </beans>
 

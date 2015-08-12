@@ -19,7 +19,7 @@ public class UnLockController {
 	public OperationResult doUnlock(UnlockReq UnlockReq) {
 		try {
 			int moneyball = unlockService.unlock(UnlockReq);
-			return new OperationResult(true, "moneyballbalance "+moneyball);
+			return new OperationResult(true, moneyball);
 		} catch (Exception ex) {
 			return new OperationResult(false, "errorCode", ex.getMessage());
 		}

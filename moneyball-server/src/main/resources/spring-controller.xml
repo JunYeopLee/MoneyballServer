@@ -16,4 +16,8 @@
 	<bean class="com.server.moneyball.controller.MatchController">
 	<property name="selectMatchListDao" ref="selectMatchListDao"/>
 	</bean>
+	
+	<bean class="com.server.moneyball.controller.BettingController">
+	<property name="bettingService" ref="bettingService"/>
+	</bean>
 </beans>

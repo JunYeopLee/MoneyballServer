@@ -24,6 +24,10 @@
   	<bean id="unlockDao" class="com.server.moneyball.unlock.IbatisUnlockDao">
 		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
 	</bean>
+	
+  	<bean id="saveUserBettingDao" class="com.server.moneyball.betting.IbatisSaveUserBettingDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
  
 </beans>
 

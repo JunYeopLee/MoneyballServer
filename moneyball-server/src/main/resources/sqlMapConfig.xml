@@ -8,5 +8,6 @@
 	 <sqlMap resource="ibatis/MatchList.xml" />
 	 <sqlMap resource="ibatis/UserModify.xml" />
 	 <sqlMap resource="ibatis/Unlock.xml" />
+	 <sqlMap resource="ibatis/Betting.xml" />
 	
 </sqlMapConfig> 
