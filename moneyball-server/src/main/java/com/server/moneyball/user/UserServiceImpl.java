@@ -73,6 +73,8 @@ public class UserServiceImpl implements UserService {
 		checkNull(foundUser);
 		checkPasswordEquals(foundUser, encryptPw);
 		foundUser.setPw(""); // 보낼때 password 안보이게 하기
+		//출석 체크 시 머니볼 지급
+		getMoneyByAttendance(id, kindOfSNS);
 		return foundUser;
 	}
 
@@ -94,6 +96,9 @@ public class UserServiceImpl implements UserService {
 		foundUser = findUser(userSignUpReq.getId(),
 				userSignUpReq.getKindOfSNS());
 		foundUser.setPw(""); // 보낼때 password 안보이게 하기
+		//출석 체크 시 머니볼 지급
+		getMoneyByAttendance(userSignUpReq.getId(),
+				userSignUpReq.getKindOfSNS());
 		return foundUser;
 	}
 
@@ -112,6 +117,11 @@ public class UserServiceImpl implements UserService {
 		if (!foundUser.isPasswordEquals(encryptPw)) {
 			throw new AuthenticationException("invalid password");
 		}
+	}
+	
+
+	public void getMoneyByAttendance(String id, int kindOfSNS) {
+		userLoginDao.updateMoneyByAttendance(id, kindOfSNS);
 	}
 
 	public void setUserLoginDao(UserLoginDao userLoginDao) {

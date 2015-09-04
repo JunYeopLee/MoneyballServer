@@ -30,12 +30,18 @@ public class UserLoginDaoTest {
 	@Test
 	public void userlogindaoTest() {
 
-		UserVO v = userLoginDao.findOne("J", 1);
+		//UserVO v = userLoginDao.findOne("J", 1);
 		//userLoginDao.selectUserInfo("J", "1", 1);
 
 		//UserVO v = userLoginDao.findUser("J", 0);
 		//assertFalse(v.getList().isEmpty());
 		//assertFalse(v.getId().isEmpty());
+		
+		UserVO v = new UserVO();
+		v.setId("kjhh1203@gmail.com");
+		v.setKindOfSNS(2);
+		
+		userLoginDao.updateMoneyByAttendance(v.getId(), v.getKindOfSNS());
 	}
 
 }

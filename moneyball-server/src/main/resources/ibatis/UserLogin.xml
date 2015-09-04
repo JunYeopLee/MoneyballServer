@@ -22,4 +22,9 @@
 	]]>
 	</select>
 	
+	<update id="updateMoneyByAttendance">
+		update moneyball.USER_TB set money = money+10 
+		where id=#id# and kind_of_sns_no = #kindOfSNS#
+	</update>
+	
 </sqlMap>
