@@ -75,6 +75,7 @@ public class UserServiceImpl implements UserService {
 		foundUser.setPw(""); // 보낼때 password 안보이게 하기
 		//출석 체크 시 머니볼 지급
 		getMoneyByAttendance(id, kindOfSNS);
+		foundUser = findUser(id, kindOfSNS);
 		return foundUser;
 	}
 
@@ -98,6 +99,8 @@ public class UserServiceImpl implements UserService {
 		foundUser.setPw(""); // 보낼때 password 안보이게 하기
 		//출석 체크 시 머니볼 지급
 		getMoneyByAttendance(userSignUpReq.getId(),
+				userSignUpReq.getKindOfSNS());
+		foundUser = findUser(userSignUpReq.getId(),
 				userSignUpReq.getKindOfSNS());
 		return foundUser;
 	}
