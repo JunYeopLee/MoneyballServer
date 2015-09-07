@@ -72,10 +72,11 @@ public class UserServiceImpl implements UserService {
 		UserVO foundUser = findUser(id, kindOfSNS);
 		checkNull(foundUser);
 		checkPasswordEquals(foundUser, encryptPw);
-		foundUser.setPw(""); // 보낼때 password 안보이게 하기
+		//foundUser.setPw(""); // 보낼때 password 안보이게 하기
 		//출석 체크 시 머니볼 지급
 		getMoneyByAttendance(id, kindOfSNS);
 		foundUser = findUser(id, kindOfSNS);
+		foundUser.setPw(""); // 보낼때 password 안보이게 하기
 		return foundUser;
 	}
 
@@ -88,20 +89,24 @@ public class UserServiceImpl implements UserService {
 			userSignUpReq.setKindOfSNS(kindOfSNS);
 			return snsSingUp(userSignUpReq, foundUser);
 		} else {
+			//출석 체크 시 머니볼 지급
+			getMoneyByAttendance(id, kindOfSNS);
+			foundUser = findUser(id, kindOfSNS);
+			foundUser.setPw("");
 			return foundUser;
 		}
 	}
 
 	private UserVO snsSingUp(UserSignUpReq userSignUpReq, UserVO foundUser) {
 		signUpUser(userSignUpReq);
-		foundUser = findUser(userSignUpReq.getId(),
-				userSignUpReq.getKindOfSNS());
-		foundUser.setPw(""); // 보낼때 password 안보이게 하기
+/*		foundUser = findUser(userSignUpReq.getId(),
+				userSignUpReq.getKindOfSNS());*/
 		//출석 체크 시 머니볼 지급
 		getMoneyByAttendance(userSignUpReq.getId(),
 				userSignUpReq.getKindOfSNS());
 		foundUser = findUser(userSignUpReq.getId(),
 				userSignUpReq.getKindOfSNS());
+		foundUser.setPw(""); // 보낼때 password 안보이게 하기
 		return foundUser;
 	}
 

@@ -38,8 +38,8 @@ public class UserLoginDaoTest {
 		//assertFalse(v.getId().isEmpty());
 		
 		UserVO v = new UserVO();
-		v.setId("kjhh1203@gmail.com");
-		v.setKindOfSNS(2);
+		v.setId("J");
+		v.setKindOfSNS(1);
 		
 		userLoginDao.updateMoneyByAttendance(v.getId(), v.getKindOfSNS());
 	}
