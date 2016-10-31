@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       
+  	<bean id="userLoginDao" class="com.swu.keeping.user.IbatisUserLoginDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+  	<bean id="userSignUpDao" class="com.swu.keeping.user.IbatisUserSignUpDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+  	<bean id="donateBloodDao" class="com.swu.keeping.user.IbatisDonateBloodDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+  	<bean id="useBloodDao" class="com.swu.keeping.user.IbatisUseBloodDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+  	<bean id="selectInfoDao" class="com.swu.keeping.user.IbatisSelectInfoDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+  	<bean id="registBloodDao" class="com.swu.keeping.user.IbatisRegistBloodDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+ 
+</beans>
+

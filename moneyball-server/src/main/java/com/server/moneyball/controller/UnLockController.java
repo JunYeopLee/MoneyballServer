@@ -15,8 +15,6 @@ public class UnLockController {
 
 	private UnlockService unlockService;
 
-	// https://localhost:8443/moneyball-server/unlock?userNum=97&matchNum=7&unlockNum=3
-	// https://166.104.142.94:61000/moneyball-server/unlock?userNum=97&matchNum=7&unlockNum=3
 	@RequestMapping("/unlock")
 	@ResponseBody
 	public OperationResult doUnlock(UnlockReq UnlockReq) {

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DonateBlood">
+
+	<update id="updateBloodTB" parameterClass="com.swu.keeping.user.DonateReq">
+		UPDATE KEEPING.BLOOD SET USER_ID=#getUserId#, SENDER_ID=#sendUserId#, FIGHTING_MSG=#fightingMsg#, IS_DONATE=1 WHERE ID=#bloodId#
+	</update>
+		
+	<update id="updateUserTB_1" parameterClass="com.swu.keeping.user.DonateReq">
+		UPDATE KEEPING.USER SET GET_CNT = GET_CNT-1, GIVE_CNT= GIVE_CNT+1 WHERE ID=#sendUserId#
+
+	</update>
+	
+	<update id="updateUserTB_2" parameterClass="com.swu.keeping.user.DonateReq">
+		UPDATE KEEPING.USER SET GET_CNT = GET_CNT+1 WHERE ID=#getUserId#
+	</update>
+
+</sqlMap>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserSignUp">
+
+	<insert id="insertUser" parameterClass="com.swu.keeping.user.UserSignUpReq">
+		INSERT INTO KEEPING.USER (ID, PW, NAME, ID_NO, BLOOD_TYPE, JOB) VALUES (#id#,#pw#, #name#, #idNo#, #bloodType#, #job#);
+	</insert>
+
+	<typeAlias alias="userVO" type="com.swu.keeping.user.UserVO" />
+	<resultMap id="userIdMap" class="userVO">
+		<result property="id" column="ID" />
+	</resultMap>
+
+
+	<select id="findId" resultMap="userIdMap" resultClass="userVO">
+		<![CDATA[
+		select ID
+		from KEEPING.USER 
+		where ID = #id# 
+	]]>
+	</select>
+
+</sqlMap>

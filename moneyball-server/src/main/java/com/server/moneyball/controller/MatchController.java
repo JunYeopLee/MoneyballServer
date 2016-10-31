@@ -13,7 +13,6 @@ public class MatchController {
 
 	private SelectMatchListDao selectMatchListDao;
 	
-	// http://localhost:8080/moneyball-server/scorepredict/matchlist?userNum=1&today=20150623
 	@RequestMapping("scorepredict/matchlist")
 	public @ResponseBody OperationResult doMatchListJSON(@RequestParam("userNum") int userNum, @RequestParam("today") String today){
 		try{

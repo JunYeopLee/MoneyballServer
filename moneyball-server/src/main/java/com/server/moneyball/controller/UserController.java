@@ -18,8 +18,6 @@ public class UserController {
 
 	private UserService userService;
 
-	// https://166.104.142.94:61000/moneyball-server/user/login?id=J&pw=3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a&kindOfSNS=1
-	// https://localhost:8443/moneyball-server/user/login?id=mip55i14J&pw=3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a&kindOfSNS=1
 	@RequestMapping("/user/login")
 	public @ResponseBody OperationResult doLoginJSON(
 			@RequestParam("id") String id, @RequestParam("pw") String pw,
@@ -33,7 +31,6 @@ public class UserController {
 		}
 	}
 
-	// https://166.104.142.94:61000/moneyball-server/user/signUp?id=1122&pw=434332242&kindOfSNS=0
 	@RequestMapping("/user/signUp")
 	@ResponseBody
 	public OperationResult doSignUp(UserSignUpReq userSignUpReq) {
@@ -47,7 +44,6 @@ public class UserController {
 		}
 	}
 
-	// https://localhost:8443/moneyball-server/user/chkIdDupl?id=juhee22kim
 	@RequestMapping("/user/chkIdDupl")
 	@ResponseBody
 	public OperationResult chkIdDupl(String id) {

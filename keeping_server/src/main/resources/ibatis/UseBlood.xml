@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UseBlood">
+
+	<update id="updateBloodTB">
+		UPDATE BLOOD SET IS_USE=1 WHERE ID=#bloodId#
+
+	</update>
+
+	<update id="updateUserTB">
+		UPDATE USER SET GET_CNT = GET_CNT-1 WHERE ID=#userId#
+
+	</update>
+
+</sqlMap>

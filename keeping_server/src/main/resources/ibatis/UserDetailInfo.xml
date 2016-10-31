@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserDetailInfo">
+
+	<typeAlias alias="userDetailVO" type="com.swu.keeping.user.UserDetailVO" />
+
+	<resultMap id="userVOMap" class="userDetailVO">
+		<result property="name" column="NAME" />
+		<result property="id" column="ID" />
+		<result property="bloodType" column="BLOOD_TYPE" />
+		<result property="doCnt" column="DO_CNT" />
+		<result property="getCnt" column="GET_CNT" />
+		<result property="giveCnt" column="GIVE_CNT" />
+		<result property="recentBloodDate" column="RECENT_BLOOD_DATE" />
+		<result property="nextBloodDate" column="NEXT_BLOOD_DATE" />
+	</resultMap>
+
+	<select id="selectUserDatailInfo" resultMap="userVOMap"
+		resultClass="userDetailVO">
+		<![CDATA[
+		SELECT NAME, ID, BLOOD_TYPE, DO_CNT, GET_CNT, GIVE_CNT, RECENT_BLOOD_DATE, NEXT_BLOOD_DATE FROM KEEPING.USER WHERE ID=#id#
+
+	]]>
+	</select>
+
+</sqlMap>

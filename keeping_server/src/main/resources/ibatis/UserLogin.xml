@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserLogin">
+
+	<typeAlias alias="userVO" type="com.swu.keeping.user.UserVO" />
+
+	<resultMap id="userVOMap" class="userVO">
+		<result property="id" column="ID" />
+		<result property="pw" column="PW" />
+		<result property="name" column="NAME" />
+		<result property="idNo" column="ID_NO" />
+		<result property="bloodType" column="BLOOD_TYPE" />
+		<result property="job" column="JOB" />
+	</resultMap>
+
+	<select id="findOne" resultMap="userVOMap" resultClass="userVO">
+		<![CDATA[
+		select ID, PW, NAME, ID_NO, BLOOD_TYPE, JOB
+		from KEEPING.USER 
+		where ID = #id# 
+		AND PW = #pw#
+	]]>
+	</select> 
+</sqlMap>

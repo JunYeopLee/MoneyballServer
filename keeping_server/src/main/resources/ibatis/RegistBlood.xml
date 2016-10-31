@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RegistBlood">
+
+	<insert id="insertBloodTB" parameterClass="com.swu.keeping.user.RegistBloodReq">
+		INSERT INTO KEEPING.BLOOD (ID,HUMAN_NAME, BIRTH_DATE,BLOOD_DATE, BLOOD_LOC, USER_ID, SENDER_ID, BLOOD_AMOUNT, 
+		BLOOD_TYPE, BLOOD_SEX, FIGHTING_MSG, IS_USE, IS_DONATE)
+		 VALUES (#id#,#humanName#, #birthDate#, #bloodDate#, #bloodLoc#, #userId#, #senderId#, #bloodAmount#, #bloodType#, #bloodSex#, NULL, 0, 0);
+	</insert>
+ 
+	<update id="updateUserTB_1" parameterClass="com.swu.keeping.user.RegistBloodReq">
+		UPDATE KEEPING.USER SET GET_CNT = GET_CNT+1 WHERE ID=#userId#;
+		
+	</update>
+	
+	<update id="updateUserTB_2" parameterClass="com.swu.keeping.user.RegistBloodReq">
+		UPDATE KEEPING.USER SET RECENT_BLOOD_DATE = #bloodDate#, NEXT_BLOOD_DATE=#nextBloodDate# WHERE ID=#userId#
+	</update> 
+</sqlMap>

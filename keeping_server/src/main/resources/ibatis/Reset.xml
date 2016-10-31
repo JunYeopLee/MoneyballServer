@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Reset">
+
+	<delete id="deleteUserTB">
+		delete from KEEPING.USER
+	</delete>
+	
+	<delete id="deleteBloodTB">
+		delete from KEEPING.BLOOD
+	</delete>
+	
+	<insert id="insertUserTB">
+	INSERT INTO KEEPING.USER VALUES('DDDD',1,'유정은','920707-2123456', 'O', '학생', 3,10,10, '2015.07.11', '2015.09.11');
+	INSERT INTO KEEPING.USER VALUES('CCCC',1,'김주흔','920504-2123456', 'A', '학생', 3,10,10, '2015.07.11', '2015.09.11');
+	INSERT INTO KEEPING.USER VALUES('BBBB',1,'백현지','921024-2123456', 'AB', '학생', 3,10,10, '2015.07.11', '2015.09.11');
+	INSERT INTO KEEPING.USER VALUES('AAAA',1,'이주은','921104-2123456', 'B', '학생', 3,10,10, '2015.07.11', '2015.09.11');
+	INSERT INTO KEEPING.USER VALUES('DO',1,'김도연','890219-2123456', 'B', '학생', 0,1,1, '2015.07.11', '2015.09.11');
+	</insert>
+ 
+	<insert id="insertBloodTB">
+
+INSERT INTO KEEPING.BLOOD VALUES('02-27-537144', '유정은', '920707', '2013.01.01', '서울 종로 헌혈의집', 'DDDD', 'DDDD', '전혈400mL', 'O', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('03-19-437146', '유정은', '920707', '2013.03.01', '서울 종로 헌혈의집', 'DDDD', 'DDDD', '전혈400mL', 'O', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('04-18-337147', '유정은', '920707', '2013.05.01', '서울 종로 헌혈의집', 'DDDD', 'DDDD', '전혈400mL', 'O', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('05-17-237148', '유정은', '920707', '2013.07.01', '서울 신림 헌혈의집', 'DDDD', 'DDDD', '전혈400mL', 'O', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('06-16-137148', '유정은', '920707', '2013.09.01', '서울 신림 헌혈의집', 'DDDD', 'DDDD', '전혈200mL', 'O', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('07-15-037141', '유정은', '920707', '2013.11.01', '서울 신림 헌혈의집', 'DDDD', 'DDDD', '전혈200mL', 'O', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('08-14-737145', '유정은', '920707', '2014.01.08', '서울 신림 헌혈의집', 'AAAA', 'DDDD', '전혈200mL', 'O', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('09-13-837143', '유정은', '920707', '2014.03.09', '서울 광화문 헌혈의집', 'BBBB', 'DDDD', '전혈200mL', 'O', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('10-12-937144', '유정은', '920707', '2014.05.10', '서울 광화문 헌혈의집', 'CCCC', 'DDDD', '전혈200mL', 'O', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('11-11-837142', '유정은', '920707', '2015.07.11', '서울 광화문 헌혈의집', 'DDDD', 'DDDD', '전혈400mL', 'O', '여', ' ',0,0);
+
+INSERT INTO KEEPING.BLOOD VALUES('12-20-537144', '김주흔', '920504', '2013.02.11', '서울 종로 헌혈의집', 'CCCC', 'CCCC', '전혈400mL', 'A', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('13-19-438846', '김주흔', '920504', '2013.04.21', '서울 종로 헌혈의집', 'AAAA', 'CCCC', '전혈400mL', 'A', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('14-18-336647', '김주흔', '920504', '2013.06.07', '서울 종로 헌혈의집', 'BBBB', 'CCCC', '전혈400mL', 'A', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('15-17-235548', '김주흔', '920504', '2013.08.23', '서울 신림 헌혈의집', 'DDDD', 'CCCC', '전혈400mL', 'A', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('16-16-134448', '김주흔', '920504', '2013.10.14', '서울 신림 헌혈의집', 'CCCC', 'CCCC', '전혈400mL', 'A', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('17-15-033341', '김주흔', '920504', '2014.12.10', '서울 신림 헌혈의집', 'CCCC', 'CCCC', '전혈200mL', 'A', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('18-14-732245', '김주흔', '920504', '2014.01.09', '서울 신림 헌혈의집', 'CCCC', 'CCCC', '전혈200mL', 'A', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('19-13-831143', '김주흔', '920504', '2014.03.01', '서울 광화문 헌혈의집', 'CCCC', 'CCCC', '전혈200mL', 'A', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('10-12-935544', '김주흔', '920504', '2014.07.12', '서울 광화문 헌혈의집', 'CCCC', 'CCCC', '전혈200mL', 'A', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('11-11-839942', '김주흔', '920504', '2015.07.11', '서울 광화문 헌혈의집', 'CCCC', 'CCCC', '전혈200mL', 'A', '여', ' ',0,0);
+
+INSERT INTO KEEPING.BLOOD VALUES('05-28-328562', '백현지', '921024', '2013.02.14', '서울 종로 헌혈의집', 'BBBB', 'BBBB', '전혈400mL', 'AB', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('05-54-237878', '백현지', '921024', '2013.07.24', '서울 종로 헌혈의집', 'BBBB', 'BBBB', '전혈400mL', 'AB', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('06-18-477177', '백현지', '921024', '2013.10.07', '서울 종로 헌혈의집', 'BBBB', 'BBBB', '전혈400mL', 'AB', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('11-17-357178', '백현지', '921024', '2014.01.23', '서울 동대문 헌혈의집', 'BBBB', 'BBBB', '전혈400mL', 'AB', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('21-16-487178', '백현지', '921024', '2014.05.14', '서울 동대문 헌혈의집', 'BBBB', 'BBBB', '전혈400mL', 'AB', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('14-15-567171', '백현지', '921024', '2014.08.10', '서울 동대문 헌혈의집', 'BBBB', 'BBBB', '전혈200mL', 'AB', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('11-14-377175', '백현지', '921024', '2014.11.09', '서울 동대문 헌혈의집', 'CCCC', 'BBBB', '전혈200mL', 'AB', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('18-13-257173', '백현지', '921024', '2015.03.01', '서울 광화문 헌혈의집', 'DDDD', 'BBBB', '전혈200mL', 'AB', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('07-12-797174', '백현지', '921024', '2015.05.12', '서울 광화문 헌혈의집', 'AAAA', 'BBBB', '전혈200mL', 'AB', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('15-11-777172', '백현지', '921024', '2015.07.11', '서울 광화문 헌혈의집', 'BBBB', 'BBBB', '전혈200mL', 'AB', '여', ' ',0,0);
+
+INSERT INTO KEEPING.BLOOD VALUES('10-15-229522', '이주은', '921104', '2013.01.14', '서울 종로 헌혈의집', 'AAAA', 'AAAA', '전혈400mL', 'B', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('07-44-739868', '이주은', '921104', '2013.03.24', '서울 종로 헌혈의집', 'AAAA', 'AAAA', '전혈400mL', 'B', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('08-38-379147', '이주은', '921104', '2013.09.07', '서울 종로 헌혈의집', 'BBBB', 'AAAA', '전혈400mL', 'B', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('09-13-559148', '이주은', '921104', '2014.01.23', '인천 부평 헌혈의집', 'CCCC', 'AAAA', '전혈400mL', 'B', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('10-56-589148', '이주은', '921104', '2014.06.14', '인천 부평 헌혈의집', 'DDDD', 'AAAA', '전혈400mL', 'B', '여', ' ',0,1);
+INSERT INTO KEEPING.BLOOD VALUES('11-17-869141', '이주은', '921104', '2014.08.20', '인천 부평 헌혈의집', 'AAAA', 'AAAA', '전혈200mL', 'B', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('13-84-379946', '이주은', '921104', '2014.11.09', '인천 부평 헌혈의집', 'AAAA', 'AAAA', '전혈200mL', 'B', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('14-19-259142', '이주은', '921104', '2015.02.08', '서울 광화문 헌혈의집', 'AAAA', 'AAAA', '전혈200mL', 'B', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('15-92-799137', '이주은', '921104', '2015.08.12', '서울 광화문 헌혈의집', 'AAAA', 'AAAA', '전혈200mL', 'B', '여', ' ',0,0);
+INSERT INTO KEEPING.BLOOD VALUES('17-61-779188', '이주은', '921104', '2015.07.11', '서울 광화문 헌혈의집', 'AAAA', 'AAAA', '전혈200mL', 'B', '여', ' ',0,0);
+
+INSERT INTO KEEPING.BLOOD VALUES('17-68-755188', '김도연', '890219', '2015.07.11', '서울 광화문 헌혈의집', 'DO', 'DO', '전혈400mL', 'B', '남', ' ',0,0);					
+	</insert>
+ 
+
+</sqlMap>

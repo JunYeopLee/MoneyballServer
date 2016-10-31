@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//BIATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserBloodInfo">
+ 	<typeAlias alias="userBloodvo" type="com.swu.keeping.user.UserBloodVO" />
+
+	<resultMap id="userVOMap" class="userBloodvo">
+		<result property="bloodID" column="ID" />
+		<result property="HUMAN_NAME" column="HUMAN_NAME" />
+		<result property="BIRTH_DATE" column="BIRTH_DATE" />
+		<result property="BLOOD_DATE" column="BLOOD_DATE" />
+		<result property="BLOOD_LOC" column="BLOOD_LOC" />
+		<result property="SENDER_ID" column="SENDER_ID" />
+		<result property="BLOOD_AMOUNT" column="BLOOD_AMOUNT" />
+		<result property="BLOOD_SEX" column="BLOOD_SEX" />
+		<result property="BLOOD_TYPE" column="BLOOD_TYPE" />
+		<result property="FIGHTING_MSG" column="FIGHTING_MSG" />
+		<result property="IS_USE" column="IS_USE" />
+		<result property="IS_DONATE" column="IS_DONATE" />
+	</resultMap>
+
+	<select id="selectUserBloodInfo" resultMap="userVOMap"	resultClass="userBloodvo">
+		<![CDATA[
+		SELECT ID, HUMAN_NAME, BIRTH_DATE, BLOOD_DATE, BLOOD_LOC, SENDER_ID, BLOOD_AMOUNT, 
+		BLOOD_SEX, BLOOD_TYPE, FIGHTING_MSG, IS_USE, IS_DONATE FROM KEEPING.BLOOD WHERE USER_ID=#id# AND IS_USE=false
+	]]>
+	</select> 
+
+</sqlMap>
